@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -208,12 +208,12 @@ namespace domasha
         /// </summary>
         static void dz6()
         {
-            Console.WriteLine("Пойду смотреть запись урока, не понимаю что требуется сделать.");
+            Console.WriteLine("Пойду смотреть запись урока, не понимаю что требуется сделать."); // играюсь в гит кракене
         }
         static void bonus()
         {
             Console.WriteLine("Вот и зачем ты нажал 7? это недостроенный бонусный уровень, как тебя зовут?");
-            string u_name = Console.ReadLine();
+            string u_name = Console.ReadLine(); 
             Console.WriteLine("пока пока " + u_name + " кликни чтонибудь для возврата в меню и не возвращайся");
         }
     }
