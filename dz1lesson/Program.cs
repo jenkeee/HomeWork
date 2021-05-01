@@ -23,6 +23,7 @@ namespace domasha
                 Console.Clear();
                 Console.WriteLine("Введите номер задачи 1-6, прочие символы не нравятся приложению ");
                 x = Convert.ToInt32(Console.ReadLine());     // если программе сообщить пробел, или символ то она даст ошибку, 
+                //if (x) { string; break; }
                 Console.Title = ("Меню");
                 switch (x)
                 {
@@ -48,8 +49,10 @@ namespace domasha
                         bonus();
                         break;
                     default:      // понравилась эта констуркция, не совсем понятно но понятно как использовать и редактировать , все дз буду оформлять по этому типу
-                        b = !b; // думаю как сделать проверку на X при чем тут не равно b                       
+                        b = !b; // думаю как сделать проверку на X при чем тут не равно b  // как я понял                     
+                        x = not;
                         Console.Write("пока пока");
+
                         break;
                 }
                 Console.ReadKey();
@@ -209,12 +212,18 @@ namespace domasha
         static void dz6()
         {
             Console.WriteLine("Пойду смотреть запись урока, не понимаю что требуется сделать.");
+        
         }
         static void bonus()
         {
+            Console.Title = ("иди отсюда пока не поздно");
             Console.WriteLine("Вот и зачем ты нажал 7? это недостроенный бонусный уровень, как тебя зовут?");
             string u_name = Console.ReadLine();
             Console.WriteLine("пока пока " + u_name + " кликни чтонибудь для возврата в меню и не возвращайся");
+        }
+        class arttem //создал класс внутри класса щас методы буду изучать принт и пауза
+        {
+
         }
     }
 
