@@ -81,10 +81,24 @@ namespace domasha
                 Console.WriteLine("Привет " + first_name + " Напиши свою фамилию, пожалуйста?");
                 String last_name = Console.ReadLine();
                 Console.WriteLine(first_name + " " + last_name + ", а какого ты роста в см? // пожалуйста вводи цифры");
-                
-                p_height = Convert.ToDouble(Console.ReadLine());
 
-                Console.WriteLine("{0} {1}, а весишь сколько в кг? // пожалуйста вводи цифры", first_name, last_name);
+                 p_height = Convert.ToDouble(Console.ReadLine());
+
+
+               /* string[] values = { null, String.Empty, "True", "False",
+                          "true", "false", "    true    ", "0",
+                          "1", "-1", "string" };
+                foreach (var value in values)
+                {
+                    bool flag;
+                    if (Boolean.TryParse(value, out flag))
+                        Console.WriteLine("'{0}' --> {1}", value, flag);
+                    else
+                        Console.WriteLine("Unable to parse '{0}'.",
+                                          value == null ? "<null>" : value);*/
+
+
+                    Console.WriteLine("{0} {1}, а весишь сколько в кг? // пожалуйста вводи цифры", first_name, last_name);
                 String p_kg = Console.ReadLine(); // до этого я объявил переменную выше присвоил ей тип дабл, и при попытке ввести строку, на 85 шаге, прогррама дает ошибку
                 // пойду ковырять вторую програмку, там удобней понять смысл проверки на true false выполненого условия. осталось понять как записать это кодом
                 //правда я каждый раз начинаю слушать лекцию, с целью понять 6тое задание и методы пауза и принт, но каждый раз я возвращаюсь на первое задание и пытаюсь придумать валидный код.
