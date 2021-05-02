@@ -12,7 +12,11 @@ namespace domasha
         /*
          * если просит ввести цифру надо ввести цифру , иначе будет краш. буду думать в сторону while
          */
-        static void Main(string[] args)
+        /// <summary>
+        /// точка входа в программу Main
+        /// </summary>
+        /// <param name="args"> параметры входа</param>
+        static void Main(string[] args)  // args в нанном случае имя метода может быть любым 
         {
             var x = 0;
             var b = true;
@@ -23,6 +27,7 @@ namespace domasha
                 Console.Clear();
                 Console.WriteLine("Введите номер задачи 1-6, прочие символы не нравятся приложению ");
                 x = Convert.ToInt32(Console.ReadLine());     // если программе сообщить пробел, или символ то она даст ошибку, 
+                //if (x) { string; break; }
                 Console.Title = ("Меню");
                 switch (x)
                 {
@@ -48,8 +53,9 @@ namespace domasha
                         bonus();
                         break;
                     default:      // понравилась эта констуркция, не совсем понятно но понятно как использовать и редактировать , все дз буду оформлять по этому типу
-                        b = !b; // думаю как сделать проверку на X при чем тут не равно b                       
-                        Console.Write("пока пока");
+                        b = !b; // думаю как сделать проверку на X при чем тут не равно b  // как я понял                     
+                                                Console.Write("пока пока");
+
                         break;
                 }
                 Console.ReadKey();
@@ -69,15 +75,21 @@ namespace domasha
             String answer01 = Console.ReadLine();
             if (answer01 == "da" || answer01 == "lf" || answer01 == "Да" || answer01 == "ок" || answer01 == "ok" || answer01 == "yes" || answer01 == "да")
             {
-                Console.WriteLine("Твое имя?, пожалуйста вводи символы по требованиб и цифры аналогично");
+                double p_height;
+                Console.WriteLine("Твое имя?, пожалуйста вводи символы по требованию и цифры аналогично");
                 String first_name = Console.ReadLine();
                 Console.WriteLine("Привет " + first_name + " Напиши свою фамилию, пожалуйста?");
                 String last_name = Console.ReadLine();
                 Console.WriteLine(first_name + " " + last_name + ", а какого ты роста в см? // пожалуйста вводи цифры");
-                String p_height = Console.ReadLine();
+                
+                p_height = Convert.ToDouble(Console.ReadLine());
+
                 Console.WriteLine("{0} {1}, а весишь сколько в кг? // пожалуйста вводи цифры", first_name, last_name);
-                String p_kg = Console.ReadLine();
-                Console.WriteLine($"{first_name} {last_name}, ростом {p_height} и весом {p_kg}, привет.");
+                String p_kg = Console.ReadLine(); // до этого я объявил переменную выше присвоил ей тип дабл, и при попытке ввести строку, на 85 шаге, прогррама дает ошибку
+                // пойду ковырять вторую програмку, там удобней понять смысл проверки на true false выполненого условия. осталось понять как записать это кодом
+                //правда я каждый раз начинаю слушать лекцию, с целью понять 6тое задание и методы пауза и принт, но каждый раз я возвращаюсь на первое задание и пытаюсь придумать валидный код.
+                //я понимаю что хочу сделать но не понимаю как сообщить это программе
+                Console.WriteLine($"{first_name} {last_name}, ростом {p_height:f1} и весом {p_kg:F1}, привет.");   // :f не работает если не объявлен тип данных double
             }
 
             else
@@ -95,7 +107,11 @@ namespace domasha
             Console.Title = ("2. Рассчитать и вывести индекс массы тела(ИМТ).");
             double weight, high;
             Console.Write("Введите ваш вес в кг: ");
-            weight = Convert.ToInt32(Console.ReadLine());
+            weight = Convert.ToDouble(Console.ReadLine());
+            weight += Math.Round(weight, 1, MidpointRounding.AwayFromZero);
+            Console.WriteLine($"я округлил переменную weight = {weight} до toEven, эксперементирую дальше");
+            //if (weight != double)
+            { }
             Console.Write("Введите ваш рост в см: ");
             high = Convert.ToInt32(Console.ReadLine());
             double I = weight / (Math.Pow(high / 100, 2));// weight / (high/100 * high/100);  // (Math.Pow(x / y, 2)) - возводит в степень 2 // Math.Sqrt извлекает квадрат
@@ -209,13 +225,70 @@ namespace domasha
         static void dz6()
         {
             Console.WriteLine("Пойду смотреть запись урока, не понимаю что требуется сделать.");
+        
         }
         static void bonus()
         {
+            Console.Title = ("иди отсюда пока не поздно");
             Console.WriteLine("Вот и зачем ты нажал 7? это недостроенный бонусный уровень, как тебя зовут?");
             string u_name = Console.ReadLine();
-            Console.WriteLine("пока пока " + u_name + " кликни чтонибудь для возврата в меню и не возвращайся");
+            // Console.WriteLine("пока пока " + u_name + " кликни чтонибудь для возврата в меню и не возвращайся");
+
+
+            Console.WriteLine("Привет " + u_name + " я попрошу ввести тебя число со знаком после запятой, к примеру 11,1233 , и мы попрубуем округлить число в большую и меньшую сторону. " +
+                "а затем конвертировать значение в новые переменные и затем объявить их" +                "");
+
+            Console.WriteLine("{0,5} {1,20:R}  {2,12} {3,15}\n",
+                        "Value", "Full Precision", "ToEven",
+                        "AwayFromZero");
+            double value = 11.1;
+            /* double znachenie = Convert.ToDouble(Console.ReadLine()); */
+
+            for (int ctr = 0; ctr <= 5; ctr++)
+                value = RoundValueAndAdd(value);
+
+            Console.WriteLine();
+
+            value = 11.5;
+            RoundValueAndAdd(value);
+
+
+            /* ZnachenieM(znachenie);
+            Console.WriteLine("{0,5:N1} {0,20:R} MidpointRounding.ToEven  || {1,12} {2,15} znachenie, MidpointRounding.AwayFromZero",
+                              znachenie, Math.Round(znachenie, MidpointRounding.ToEven),
+                              Math.Round(znachenie, MidpointRounding.AwayFromZero));*/
+
+
+
+            /* // Я вроде разобрался с округлениями, сейчас напишу программу, которая округлит 0,5 в большую сторону и в меньшую сторону*/
+
+            Console.Write("Привет, введи число 16,5 или 17,5 я его округлю в большую сторону и в меньшую");
+            double znachenie = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("{0,0:N0} {1,12}",
+                               znachenie, Math.Round(znachenie, MidpointRounding.ToEven),
+                               Math.Round(znachenie, MidpointRounding.AwayFromZero));
+          // осталось понять как сохранить полученные результаты как int 32
         }
+
+        private static double RoundValueAndAdd(double value) // пробовал зачемто выполнять внутри этого метода манипуляции со znachenie, щас пишу новый метод
+        {
+            Console.WriteLine("{0,5:N1} {0,20:R} {0,0:N0} {1,12} {2,15}",
+                              value, Math.Round(value, MidpointRounding.ToEven),
+                              Math.Round(value, MidpointRounding.AwayFromZero));
+            return value + .1; // 
+        }
+
+        private static double ZnachenieM (double znachenie) // пробовал зачемто выполнять внутри этого метода манипуляции со znachenie, щас пишу новый метод
+        {
+            Console.WriteLine("{0,5:N1} {0,20:R} {0,0:R}  {1,12} {2,15}",
+                              znachenie, Math.Round(znachenie, MidpointRounding.ToEven),
+                              Math.Round(znachenie, MidpointRounding.AwayFromZero));
+            return znachenie + .1;
+        }
+        /*class arttem //создал класс внутри класса щас методы буду изучать принт и пауза
+        {
+
+        }*/
     }
 
 
